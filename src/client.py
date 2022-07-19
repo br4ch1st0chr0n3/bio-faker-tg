@@ -1,4 +1,6 @@
 import logging
+
+from requests import request
 import telethon
 
 from asyncio import sleep
@@ -42,9 +44,12 @@ class Client:
     
     async def set_time_left_to_bio(self):
         try:
-            await self.edit_bio(TIME_LEFT_MESSAGE % get_passed_time_in_words())
+            await self.edit_bio(self.new_phrase())
         except telethon.errors.rpcerrorlist.AboutTooLongError:
             pass
+    
+    def new_phrase(self):
+        return request("get", "https://bio-faker-back.herokuapp.com/yoda").json()["text"]
 
     def __str__(self):
         me = self.account.get_me()
