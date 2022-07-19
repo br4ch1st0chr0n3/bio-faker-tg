@@ -1,13 +1,11 @@
 FROM python:3.7
 
-WORKDIR /updater/
+WORKDIR .
 
 COPY requirements.txt .
 
 RUN python -m pip install -r requirements.txt
 
-COPY . .
-
-ENV PYTHONPATH "${PYTHONPATH}:/updater"
+ENV PYTHONPATH "${PYTHONPATH}:/bio-faker-tg"
 
 CMD python app/main.py

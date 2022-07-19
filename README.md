@@ -49,3 +49,8 @@ You can notice that file `sessions/account0.session` has been created. Using thi
 ```console
 $ docker compose up -d updater
 ```
+
+
+## References
+* docker [rootless](https://docs.docker.com/engine/security/rootless/)
+* `python.analysis.diagnosticSeverityOverrides` (see [here](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)) to show import errors

@@ -1,26 +1,16 @@
-import datetime
-import pytz
-
-from src.credentials import credentials
-
-
 CHECK_INTERVAL = 3
 
-TIME_ZONE = 'Etc/GMT-3'
+TIME_ZONE = "Etc/GMT-3"
 
-INTERNET_CHECK_URL = '1.1.1.1'
+INTERNET_CHECK_URL = "1.1.1.1"
 
-BIO_MESSAGES = [
-    'Сейчас %s.',
-    'Кстати, сейчас %s.',
-    'Кстати, сейчас уже %s.',
-    'Уже %s.',
-    'На часах %s',
-    '%s',
-    'Точное время: %s',
-    'МСК время: %s',
-    ]
+LOG_FORMAT = "%(levelname) -10s %(asctime)s %(name) -15s %(funcName) -20s: %(message)s"
 
-DATE_FROM = datetime.datetime(2022, 2, 24, 3, 0, 0, tzinfo=pytz.UTC) 
+# in minutes
+PERIOD = 1
 
-TIME_LEFT_MESSAGE = 'Прошло уже %s'
+TOPIC = "yoda"
+
+SERVER = f"https://bio-faker-back.herokuapp.com/{TOPIC}"
+
+GET = "get"

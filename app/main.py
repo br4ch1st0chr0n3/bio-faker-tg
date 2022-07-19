@@ -2,12 +2,24 @@ import logging
 
 from asyncio import get_event_loop, sleep
 
-from src.config import CHECK_INTERVAL
-from src.misc import client_account
-from src.utils import is_connected
+import socket
+from src.config import INTERNET_CHECK_URL, CHECK_INTERVAL, LOG_FORMAT
+from src.client import Client
+from src.credentials import credentials
+
+def is_connected():
+    """
+    Return true if script
+    has connection to the Internet
+    """
+    try:
+        socket.create_connection((INTERNET_CHECK_URL, 53))
+        return True
+    except OSError:
+        return False
 
 
-async def internet_pooling(function, interval, **kwargs):
+async def poll_inernet(function, interval, **kwargs):
     max_sleep = 15 * 60
     sleep_if_no_internet = interval
 
@@ -18,22 +30,26 @@ async def internet_pooling(function, interval, **kwargs):
             await function(**kwargs)
             await sleep(interval)
         else:
-            logging.error(f'No internet connection. sleep for {sleep_if_no_internet} seconds')
+            logging.error(
+                f"No internet connection. sleep for {sleep_if_no_internet} seconds"
+            )
             await sleep(min(sleep_if_no_internet, max_sleep))
             sleep_if_no_internet += interval
-        
 
 
-LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -15s %(funcName) -20s: %(message)s')
-logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
+if __name__ == "__main__":
 
-print(client_account)
+    client_account = Client(**credentials, try_logging_in=True)
 
-loop = get_event_loop()
+    logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 
-future = internet_pooling(
-        function=client_account.set_time_left_to_bio, 
+    print(client_account)
+
+    loop = get_event_loop()
+
+    future = poll_inernet(
+        function=client_account.set_new_phrase,
         interval=CHECK_INTERVAL,
     )
 
-loop.run_until_complete(future)
+    loop.run_until_complete(future)

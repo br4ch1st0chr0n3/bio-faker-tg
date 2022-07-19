@@ -5,10 +5,10 @@ services:
         build: .
         restart: always
         volumes: 
-            - ./sessions:/updater/sessions
+            - ./sessions:./sessions
 
     session_creator:
         build: .
         volumes: 
-            - ./sessions:/updater/sessions
+            - ./sessions:./sessions
         command: python src/misc.py
