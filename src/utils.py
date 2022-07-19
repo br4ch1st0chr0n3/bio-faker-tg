@@ -1,5 +1,5 @@
 import socket
-from config import INTERNET_CHECK_URL
+from src.config import INTERNET_CHECK_URL
 
 def is_connected():
     """

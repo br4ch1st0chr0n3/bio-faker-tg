@@ -3,7 +3,7 @@ import itertools
 import datetime
 
 
-from time_tools import _generate_translate_options
+from src.time_tools import _generate_translate_options
 
 
 def d(h, m):

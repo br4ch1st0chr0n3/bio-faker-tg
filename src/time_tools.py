@@ -3,11 +3,11 @@ import datetime
 import pytz
 import random
 
-from config import DATE_FROM, TIME_ZONE
+from src.config import DATE_FROM, TIME_ZONE
 from datetime import timedelta
 from random import randrange
 
-from russian import (
+from src.russian import (
     day_in_nominative, enumerate_items_to_string, hour_in_nominative, hour_in_genitive, 
     minute_in_genitive, minute_in_nominative, 
     number_to_russian, normilize_word,

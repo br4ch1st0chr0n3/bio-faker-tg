@@ -1,5 +1,5 @@
 sessions/
-credentials.py
+**/credentials.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -138,3 +138,5 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+updater

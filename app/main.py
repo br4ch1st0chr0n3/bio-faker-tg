@@ -2,9 +2,9 @@ import logging
 
 from asyncio import get_event_loop, sleep
 
-from config import CHECK_INTERVAL
-from misc import client_account
-from utils import is_connected
+from src.config import CHECK_INTERVAL
+from src.misc import client_account
+from src.utils import is_connected
 
 
 async def internet_pooling(function, interval, **kwargs):

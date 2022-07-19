@@ -1,7 +1,7 @@
 import datetime
 import pytz
 
-from credentials import credentials
+from src.credentials import credentials
 
 
 CHECK_INTERVAL = 3

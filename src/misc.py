@@ -1,5 +1,5 @@
-from config import credentials
-from client import Client
+from src.config import credentials
+from src.client import Client
 
 __all__ = ("client_account",)
 

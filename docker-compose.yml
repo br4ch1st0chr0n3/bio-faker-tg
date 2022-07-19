@@ -11,4 +11,4 @@ services:
         build: .
         volumes: 
             - ./sessions:/updater/sessions
-        command: python misc.py
+        command: python src/misc.py

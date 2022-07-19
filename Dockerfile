@@ -10,4 +10,4 @@ COPY . .
 
 ENV PYTHONPATH "${PYTHONPATH}:/updater"
 
-CMD python run.py
+CMD python app/main.py

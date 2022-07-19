@@ -29,12 +29,12 @@ credentials = {
 3. Build docker
 
 ```console
-$ docker-compose build
+$ docker compose build
 ```
 
 4. Create session file (you need to do it only once)
 ```console
-$ docker-compose run session_creator
+$ docker compose run session_creator
 Creating status_auto_update_session_creator_run ... done
 Please enter your phone (or bot token): <your telephone>
 Please enter the code you received: <code you received>
@@ -47,5 +47,5 @@ You can notice that file `sessions/account0.session` has been created. Using thi
 5. Run the poliing script using docker:
 
 ```console
-$ docker-compose up -d updater
+$ docker compose up -d updater
 ```

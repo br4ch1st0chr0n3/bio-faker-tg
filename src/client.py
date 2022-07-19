@@ -8,8 +8,8 @@ from telethon import TelegramClient, sync
 from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.tl.functions.account import UpdateProfileRequest
 
-from config import BIO_MESSAGES, TIME_LEFT_MESSAGE
-from time_tools import get_current_time_in_words, get_now, get_passed_time_in_words
+from src.config import BIO_MESSAGES, TIME_LEFT_MESSAGE
+from src.time_tools import get_current_time_in_words, get_now, get_passed_time_in_words
 
 
 class Client:
