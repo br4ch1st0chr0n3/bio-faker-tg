@@ -34,8 +34,7 @@ $ docker compose build
 
 4. Create session file (you need to do it only once)
 ```console
-$ docker compose run session_creator
-Creating status_auto_update_session_creator_run ... done
+$ docker compose run create_session
 Please enter your phone (or bot token): <your telephone>
 Please enter the code you received: <code you received>
 Please enter your password: <your password>
@@ -44,10 +43,10 @@ Signed in successfully as Lev Lymarenko
 
 You can notice that file `sessions/account0.session` has been created. Using this file **everyone** can access your account. Do not share to anyone either!
 
-5. Run the poliing script using docker:
+5. Run the polling script using docker:
 
 ```console
-$ docker compose up -d updater
+$ docker compose up updater
 ```
 
 

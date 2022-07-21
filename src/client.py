@@ -7,6 +7,7 @@ from asyncio import sleep
 from datetime import timedelta
 
 # sync is a magical module!
+# don't remove it
 from telethon import TelegramClient, sync
 from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.tl.functions.account import UpdateProfileRequest

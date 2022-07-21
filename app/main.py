@@ -4,8 +4,7 @@ from asyncio import get_event_loop, sleep
 
 import socket
 from src.config import INTERNET_CHECK_URL, CHECK_INTERVAL, LOG_FORMAT
-from src.client import Client
-from src.credentials import credentials
+from src.create_session import client_account
 
 def is_connected():
     """
@@ -37,19 +36,16 @@ async def poll_inernet(function, interval, **kwargs):
             sleep_if_no_internet += interval
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 
-    client_account = Client(**credentials, try_logging_in=True)
+print(client_account)
 
-    logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
+loop = get_event_loop()
 
-    print(client_account)
+future = poll_inernet(
+    function=client_account.set_new_phrase,
+    interval=CHECK_INTERVAL,
+)
 
-    loop = get_event_loop()
-
-    future = poll_inernet(
-        function=client_account.set_new_phrase,
-        interval=CHECK_INTERVAL,
-    )
-
-    loop.run_until_complete(future)
+loop.run_until_complete(future)
