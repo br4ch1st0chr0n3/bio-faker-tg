@@ -7,6 +7,9 @@ WORKDIR ${HOME}
 
 COPY requirements.txt .
 
+# cache python packages
+# https://pythonspeed.com/articles/docker-cache-pip-downloads/
+
 RUN --mount=type=cache,target=/root/.cache \
     python -m pip install -r requirements.txt
 
