@@ -17,13 +17,3 @@ services:
             - ./sessions:/updater/sessions
         command: 
             python src/create_session.py
-            # ls sessions
-            # ls .
-    
-    # list_files:
-    #     build: .
-    #     volumes:
-    #       - ./sessions:/updater/sessions
-    #     command:
-            # ls sessions
-            # ls .
