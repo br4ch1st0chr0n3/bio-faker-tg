@@ -11,9 +11,11 @@ services:
         volumes:
             - ./sessions:/updater/sessions
         env_file: credentials.env
+        depends_on:
+            - create_session
 
     create_session:
-        # Create a session file (you need to do it only once)
+        # Establish a session with Telegram
         build: .
         volumes:
             - ./sessions:/updater/sessions

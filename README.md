@@ -21,32 +21,74 @@
 
 1. Set it to [rootless mode](https://docs.docker.com/engine/security/rootless/)
 
-1. Clone this repo
+1. Open a terminal
+
+### Run via DockerHub
+
+<ol start="5">
+<li>
+Create a directory and a file for credentials
+
+```sh
+mkdir my_dir
+cd my_dir
+touch credentials.env
+printf "API_ID=YOUR_API_ID_HERE\nAPI_HASH=YOUR_API_HASH_HERE" > credentials.env
+```
+</li>
+<li>
+
+Put your credentials there
+
+</li>
+
+<li>
+Pull the image and start docker
+
+```sh
+docker pull dademd/bio-faker-tg
+docker run -d --env-file credentials.env dademd/bio-faker-tg
+docker logs -f dademd/bio-faker-tg
+```
+
+</li>
+</ol>
+
+### Run from sources
+
+<ol start="5">
+<li>
+Clone this repo
 
 ```sh
 git clone https://github.com/br4ch1st0chr0n3/bio-faker-tg
 cd bio-faker-tg
 ```
 
-1. Copy template credentials file
+</li>
+<li>
+Copy template credentials file
 
 ```sh
 cp credentials.template.env credentials.env
 ```
 
-1. Put your credentials into `credentials.env`
+</li>
 
-### From sources
+<li>
+Put your credentials into `credentials.env`
+</li>
 
-1. Start the app. You will have to establish a session
+<li>
+Start the app. You will have to establish a session. This will create a <tt>sessions/account1.session</tt> file. Using this file <b>everyone</b> can access your account. Do not share this file with anyone!
 
 ```sh
 sh source_start.sh
 ```
 
-## From DockerHub
+</li>
 
-* When establishing a session, a `sessions/account1.session` file will be created. Using this file **everyone** can access your account. Do not share this file with anyone!
+</ol>
 
 ## References
 
