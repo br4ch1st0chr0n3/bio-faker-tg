@@ -13,6 +13,7 @@ services:
         env_file: credentials.env
 
     create_session:
+        # Create a session file (you need to do it only once)
         build: .
         volumes:
             - ./sessions:/updater/sessions
