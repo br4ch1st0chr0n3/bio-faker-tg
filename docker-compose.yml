@@ -10,6 +10,7 @@ services:
         # The second part is the path in the container.
         volumes:
             - ./sessions:/updater/sessions
+        env_file: credentials.env
 
     create_session:
         build: .
@@ -17,3 +18,6 @@ services:
             - ./sessions:/updater/sessions
         command: 
             python src/create_session.py
+        # env file 
+        # https://vsupalov.com/docker-arg-env-variable-guide/
+        env_file: credentials.env

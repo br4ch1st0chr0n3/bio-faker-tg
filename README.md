@@ -8,7 +8,7 @@ Telegram bio updater
 
 1. Note: it does not make you always `online`
 
-## How to install
+## Running
 
 1. You need your telegram `api_id` and `api_hash`. 
     
@@ -17,10 +17,23 @@ Telegram bio updater
     ![](media/my_telegram.png)
     + Do not share it with anyone!
 
-1. Paste your credentials into `cridentials.py`:
+
+### Run from Docker Hub
+
+* Rename the credentials file and fill its fields with your credentials:
+
+```sh
+mv credentials.template.env credentials.env
+```
+
+
+
+## How to install
+
+1. Paste your credentials into `src/credentials.py`:
 
 ```python
-credentials = {    
+credentials = {
     'api_id': <api_id>,
     'api_hash': '<api_hash>',
     'session': 'sessions/account1.session'
@@ -77,3 +90,5 @@ $ sh start.sh
 * `python.analysis.diagnosticSeverityOverrides` (see [here](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)) to show import errors
 
 * cache python packages: [src](https://pythonspeed.com/articles/docker-cache-pip-downloads/)
+
+* docker variables: [src](https://vsupalov.com/docker-arg-env-variable-guide/)
