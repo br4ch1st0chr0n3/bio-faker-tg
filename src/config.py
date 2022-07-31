@@ -6,11 +6,14 @@ INTERNET_CHECK_URL = "1.1.1.1"
 
 LOG_FORMAT = "%(levelname) -10s %(asctime)s %(name) -15s %(funcName) -20s: %(message)s"
 
-# in minutes
+# import logging
+import os
+
 PERIOD = 1
 
-TOPIC = "yoda"
+try:
+    PERIOD = int(os.environ['PERIOD'])
 
-SERVER = f"https://bio-faker-back.herokuapp.com/{TOPIC}"
-
-GET = "get"
+except Exception as e:
+    print(f"Setting the default PERIOD: {PERIOD}")
+    # logging.info(f"Setting the default PERIOD: {PERIOD}")

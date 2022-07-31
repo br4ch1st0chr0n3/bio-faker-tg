@@ -4,3 +4,5 @@ docker compose build
 docker compose up -d $TOP_SERVER
 # listen to logs
 docker compose logs -f $TOP_SERVER
+
+echo "wtf"

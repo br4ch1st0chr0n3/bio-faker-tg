@@ -1,7 +1,7 @@
 from src.client import Client
 
-from src.credentials import credentials
+from src.settings import settings
 
 __all__ = ("client_account",)
 
-client_account = Client(**credentials, try_logging_in=True)
+client_account = Client(**settings, try_logging_in=True)

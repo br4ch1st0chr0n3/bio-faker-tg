@@ -12,10 +12,13 @@ from telethon import TelegramClient, sync
 from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.tl.functions.account import UpdateProfileRequest
 
+from src.quotes import yoda
+
 import datetime
 import pytz
+import secrets
 
-from src.config import SERVER, PERIOD, TIME_ZONE, GET
+from src.config import PERIOD, TIME_ZONE
 
 
 def get_now() -> datetime.datetime:
@@ -35,9 +38,8 @@ class Client:
 
     async def edit_bio(self, new_bio):
         logging.debug("check for changing bio")
-        # 1 minute
         try:
-            if get_now().minute != self.lastupdate.minute:
+            if get_now().minute - self.lastupdate.minute >= PERIOD:
                 logging.info(f"Change bio to `{new_bio}`")
                 await self.account(
                     UpdateProfileRequest(
@@ -56,9 +58,7 @@ class Client:
             pass
 
     def new_phrase(self):
-        return request(GET, SERVER).json()[
-            "text"
-        ]
+        return secrets.choice(yoda)
 
     def __str__(self):
         me = self.account.get_me()

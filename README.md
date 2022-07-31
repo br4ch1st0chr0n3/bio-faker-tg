@@ -27,18 +27,23 @@
 
 <ol start="5">
 <li>
-Create a directory and a file for credentials
+Create a directory and a file for settings
 
 ```sh
 mkdir my_dir
 cd my_dir
-touch credentials.env
-printf "API_ID=YOUR_API_ID_HERE\nAPI_HASH=YOUR_API_HASH_HERE" > credentials.env
+touch settings.env
+printf '%s\n' \
+  'API_ID=YOUR_API_ID_HERE'\
+  'API_HASH=YOUR_API_HASH_HERE'\
+  'PERIOD=UPDATE_PERIOD_IN_MINUTES'\
+  > settings.env
 ```
+
 </li>
 <li>
 
-Put your credentials there
+Put your settings there
 
 </li>
 
@@ -47,7 +52,7 @@ Pull the image and start docker
 
 ```sh
 docker pull dademd/bio-faker-tg
-docker run -d --env-file credentials.env dademd/bio-faker-tg
+docker run -d --env-file settings.env dademd/bio-faker-tg
 docker logs -f dademd/bio-faker-tg
 ```
 
@@ -67,16 +72,16 @@ cd bio-faker-tg
 
 </li>
 <li>
-Copy template credentials file
+Copy template settings file
 
 ```sh
-cp credentials.template.env credentials.env
+cp settings.template.env settings.env
 ```
 
 </li>
 
 <li>
-Put your credentials into `credentials.env`
+Put your settings into `settings.env`
 </li>
 
 <li>
