@@ -2,13 +2,11 @@
 
 ## What it does
 
-1. With a given frequency, it gets some text supplied by a [server](https://github.com/br4ch1st0chr0n3/bio-faker-back)
+1. With a given frequency, it updates your bio with [quotes](./src/quotes.py) of < 70 characters
 
-1. Sets this text as your bio
+1. Does not make you always `online`
 
-1. Note: it does not make you always `online`
-
-## Running
+## Run
 
 1. You need your telegram `api_id` and `api_hash`.
 
@@ -48,16 +46,28 @@ Put your settings there
 </li>
 
 <li>
-Pull the image and start docker
+Pull the image and start docker in detached (`-d`) mode
 
 ```sh
 docker pull dademd/bio-faker-tg
 docker run -d --env-file settings.env dademd/bio-faker-tg
-docker logs -f dademd/bio-faker-tg
 ```
 
 </li>
+
+<li>
+Find out the container name and follow its logs
+
+```sh
+$ docker container ls
+CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS     NAMES
+bb4bc01762ab   dademd/bio-faker-tg   "/bin/sh -c 'python …"   5 minutes ago   Up 5 minutes             magical_kirch
+$ docker logs -f magical_kirch
+```
+</li>
 </ol>
+
+
 
 ### Run from sources
 
