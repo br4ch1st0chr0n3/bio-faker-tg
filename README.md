@@ -2,7 +2,7 @@
 
 ## What it does
 
-1. With a given frequency, it updates your bio with [quotes](./src/quotes.py) of < 70 characters
+1. With a given frequency, it updates your bio with a Yoda's [quote](./src/quotes.py) of $\leq 70$ characters
 
 1. Does not make you always `online`
 
@@ -57,6 +57,12 @@ docker run -d --env-file settings.env dademd/bio-faker-tg
 
 <li>
 Find out the container name and follow its logs
+
+```sh
+docker logs -f $(docker run -d --env-file settings.env dademd/bio-faker-tg)
+```
+
+or
 
 ```sh
 $ docker container ls
